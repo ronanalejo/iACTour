@@ -29,7 +29,7 @@ namespace AI_VOICE_RECOGNITION_BENNETT_TANYAG
             {
                 synth.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Child);
                 Choices commands = new Choices();
-                commands.Add(new string[] {"What is iACADEMY", "What floor is (PlaceA)", "Could you give me the payment options to pay my tuition in iACADEMY", "What are the available organizations in iACADEMY", "What are the available courses in iACADEMY", "Bye bot"});
+                commands.Add(new string[] {"What is iACADEMY", "What facilities are on ground floor","What facilities are on mezzanine floor","What facilities are on second floor", "What facilities are on third floor", "What facilities are on fourth floor", "What facilities are on fifth floor", "What facilities are on sixth floor", "What facilities are on seventh floor", "What facilities are on eighth floor", "What facilities are on ninth floor", "What facilities are on tenth floor", "What facilities are on twelfth floor", "What facilities are on lower penthouse floor", "What facilities are on upper penthouse floor", "Could you give me the payment options to pay my tuition in iACADEMY", "What are the available organizations in iACADEMY", "What are the available courses in iACADEMY", "Bye bot"});
                 GrammarBuilder gBuilder = new GrammarBuilder();
                 gBuilder.Append(commands);
                 Grammar grammar = new Grammar(gBuilder);
@@ -61,9 +61,37 @@ namespace AI_VOICE_RECOGNITION_BENNETT_TANYAG
                         s = txtSpeech.Text;
                         synth.Speak(s);
                         break;
-                    case "What floor is (PlaceA)":
+                    case string query when query.StartsWith("What facilities are on") && query.EndsWith("floor"):
                         txtSpeech.Clear();
-                        s = "it's somewhere. \r\n";
+                     
+                        string floorName = query.Replace("What facilities are on", "").Replace("floor", "").Trim().ToLower();
+
+                        var facilitiesByFloor = new Dictionary<string, string>
+                    {
+                        { "ground", "Building Lobby & Turnstile System, Equipment Center, Partner’s Hive, Gamers Hive, ATM Machine, Admissions, Registrars, Finance, Clinic" },
+                        { "mezzanine", "Meeting Rooms, OSAS, ELPD, IT Department, HR Department, Executive Office" },
+                        { "second", "Parking Area, Purchasing Department, Facilities Stock Room" },
+                        { "third", "Admin Office, Parking Area" },
+                        { "fourth", "Parking Area" },
+                        { "fifth", "Cafeteria, Grass Area / Student Lounge, Employee Lounge" },
+                        { "sixth", "SHS Library" },
+                        { "seventh", "Sewing Room, Pink Room / Fashion Design Room, Green Room, Sound Room, Multimedia Arts Laboratory" },
+                        { "eighth", "Faculty Room, MMA Laboratory" },
+                        { "ninth", "College Library" },
+                        { "tenth", "Lightbox Room, Mac Laboratory, Cintiq Laboratory, Unity Game Laboratory, MPSD Laboratory, Wet and Dry Drawing Room, Chemistry and Physics Laboratory, Multimedia Arts Laboratory" },
+                        { "twelfth", "Auditorium, Multipurpose Hall, Nexus Gallery" },
+                        { "lower penthouse", "Gymnasium, PE Room, Garden Deck (East Wing / West Wing)" },
+                        { "upper penthouse", "Running Track, Library" }
+                    };
+                        if (facilitiesByFloor.TryGetValue(floorName, out string facilities))
+                        {
+                            s = $"The facilities that are located on the {floorName} floor are: {facilities}.";
+                        }
+                        else
+                        {
+                            s = $"Sorry, I don't have information on the facilities for {floorName} floor.";
+                        }
+
                         txtSpeech.Text = s;
                         synth.Speak(s);
                         break;
