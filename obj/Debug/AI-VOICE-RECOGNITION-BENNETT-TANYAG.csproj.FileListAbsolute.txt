@@ -1,0 +1,33 @@
+C:\Users\benz\source\repos\AI-VOICE-RECOGNITION-BENNETT-TANYAG\bin\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.exe.config
+C:\Users\benz\source\repos\AI-VOICE-RECOGNITION-BENNETT-TANYAG\bin\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.exe
+C:\Users\benz\source\repos\AI-VOICE-RECOGNITION-BENNETT-TANYAG\bin\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.pdb
+C:\Users\benz\source\repos\AI-VOICE-RECOGNITION-BENNETT-TANYAG\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.csproj.AssemblyReference.cache
+C:\Users\benz\source\repos\AI-VOICE-RECOGNITION-BENNETT-TANYAG\obj\Debug\AI_VOICE_RECOGNITION_BENNETT_TANYAG.Form1.resources
+C:\Users\benz\source\repos\AI-VOICE-RECOGNITION-BENNETT-TANYAG\obj\Debug\AI_VOICE_RECOGNITION_BENNETT_TANYAG.Properties.Resources.resources
+C:\Users\benz\source\repos\AI-VOICE-RECOGNITION-BENNETT-TANYAG\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.csproj.GenerateResource.cache
+C:\Users\benz\source\repos\AI-VOICE-RECOGNITION-BENNETT-TANYAG\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.csproj.CoreCompileInputs.cache
+C:\Users\benz\source\repos\AI-VOICE-RECOGNITION-BENNETT-TANYAG\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.exe
+C:\Users\benz\source\repos\AI-VOICE-RECOGNITION-BENNETT-TANYAG\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.pdb
+C:\Users\benz\source\repos\AI-VOICE-RECOGNITION-BENNETT-TANYAG\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.csproj.SuggestedBindingRedirects.cache
+C:\Users\Gabrielle\Downloads\intro to ai\AI-VOICE-RECOGNITION-BENNETT-TANYAG\bin\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.exe.config
+C:\Users\Gabrielle\Downloads\intro to ai\AI-VOICE-RECOGNITION-BENNETT-TANYAG\bin\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.exe
+C:\Users\Gabrielle\Downloads\intro to ai\AI-VOICE-RECOGNITION-BENNETT-TANYAG\bin\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.pdb
+C:\Users\Gabrielle\Downloads\intro to ai\AI-VOICE-RECOGNITION-BENNETT-TANYAG\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.csproj.AssemblyReference.cache
+C:\Users\Gabrielle\Downloads\intro to ai\AI-VOICE-RECOGNITION-BENNETT-TANYAG\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.csproj.SuggestedBindingRedirects.cache
+C:\Users\Gabrielle\Downloads\intro to ai\AI-VOICE-RECOGNITION-BENNETT-TANYAG\obj\Debug\AI_VOICE_RECOGNITION_BENNETT_TANYAG.Form1.resources
+C:\Users\Gabrielle\Downloads\intro to ai\AI-VOICE-RECOGNITION-BENNETT-TANYAG\obj\Debug\AI_VOICE_RECOGNITION_BENNETT_TANYAG.Properties.Resources.resources
+C:\Users\Gabrielle\Downloads\intro to ai\AI-VOICE-RECOGNITION-BENNETT-TANYAG\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.csproj.GenerateResource.cache
+C:\Users\Gabrielle\Downloads\intro to ai\AI-VOICE-RECOGNITION-BENNETT-TANYAG\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.csproj.CoreCompileInputs.cache
+C:\Users\Gabrielle\Downloads\intro to ai\AI-VOICE-RECOGNITION-BENNETT-TANYAG\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.exe
+C:\Users\Gabrielle\Downloads\intro to ai\AI-VOICE-RECOGNITION-BENNETT-TANYAG\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.pdb
+C:\Users\Gabrielle\Downloads\intro to ai\AI-VOICE-RECOGNITION-BENNETT-TANYAG-edited\bin\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.exe.config
+C:\Users\Gabrielle\Downloads\intro to ai\AI-VOICE-RECOGNITION-BENNETT-TANYAG-edited\bin\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.exe
+C:\Users\Gabrielle\Downloads\intro to ai\AI-VOICE-RECOGNITION-BENNETT-TANYAG-edited\bin\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.pdb
+C:\Users\Gabrielle\Downloads\intro to ai\AI-VOICE-RECOGNITION-BENNETT-TANYAG-edited\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.csproj.AssemblyReference.cache
+C:\Users\Gabrielle\Downloads\intro to ai\AI-VOICE-RECOGNITION-BENNETT-TANYAG-edited\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.csproj.SuggestedBindingRedirects.cache
+C:\Users\Gabrielle\Downloads\intro to ai\AI-VOICE-RECOGNITION-BENNETT-TANYAG-edited\obj\Debug\AI_VOICE_RECOGNITION_BENNETT_TANYAG.Form1.resources
+C:\Users\Gabrielle\Downloads\intro to ai\AI-VOICE-RECOGNITION-BENNETT-TANYAG-edited\obj\Debug\AI_VOICE_RECOGNITION_BENNETT_TANYAG.Properties.Resources.resources
+C:\Users\Gabrielle\Downloads\intro to ai\AI-VOICE-RECOGNITION-BENNETT-TANYAG-edited\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.csproj.GenerateResource.cache
+C:\Users\Gabrielle\Downloads\intro to ai\AI-VOICE-RECOGNITION-BENNETT-TANYAG-edited\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.csproj.CoreCompileInputs.cache
+C:\Users\Gabrielle\Downloads\intro to ai\AI-VOICE-RECOGNITION-BENNETT-TANYAG-edited\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.exe
+C:\Users\Gabrielle\Downloads\intro to ai\AI-VOICE-RECOGNITION-BENNETT-TANYAG-edited\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.pdb
