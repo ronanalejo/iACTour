@@ -41,3 +41,30 @@ C:\Users\Ma. Nona L. Alejo\OneDrive - St John's Lutheran Church\iACADEMY\3rd Yea
 C:\Users\Ma. Nona L. Alejo\OneDrive - St John's Lutheran Church\iACADEMY\3rd Year\IntroToAI\Project\iAC Tour\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.csproj.CoreCompileInputs.cache
 C:\Users\Ma. Nona L. Alejo\OneDrive - St John's Lutheran Church\iACADEMY\3rd Year\IntroToAI\Project\iAC Tour\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.exe
 C:\Users\Ma. Nona L. Alejo\OneDrive - St John's Lutheran Church\iACADEMY\3rd Year\IntroToAI\Project\iAC Tour\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.pdb
+C:\Users\Gabrielle\Downloads\iACTour\bin\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.exe.config
+C:\Users\Gabrielle\Downloads\iACTour\bin\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.exe
+C:\Users\Gabrielle\Downloads\iACTour\bin\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.pdb
+C:\Users\Gabrielle\Downloads\iACTour\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.csproj.AssemblyReference.cache
+C:\Users\Gabrielle\Downloads\iACTour\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.csproj.SuggestedBindingRedirects.cache
+C:\Users\Gabrielle\Downloads\iACTour\obj\Debug\AI_VOICE_RECOGNITION_BENNETT_TANYAG.Form1.resources
+C:\Users\Gabrielle\Downloads\iACTour\obj\Debug\AI_VOICE_RECOGNITION_BENNETT_TANYAG.Properties.Resources.resources
+C:\Users\Gabrielle\Downloads\iACTour\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.csproj.GenerateResource.cache
+C:\Users\Gabrielle\Downloads\iACTour\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.csproj.CoreCompileInputs.cache
+C:\Users\Gabrielle\Downloads\iACTour\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.exe
+C:\Users\Gabrielle\Downloads\iACTour\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.pdb
+C:\Users\Gabrielle\Downloads\iACTour - Copy\bin\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.exe.config
+C:\Users\Gabrielle\Downloads\iACTour - Copy\bin\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.exe
+C:\Users\Gabrielle\Downloads\iACTour - Copy\bin\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.pdb
+C:\Users\Gabrielle\Downloads\iACTour - Copy\bin\Debug\Interop.WMPLib.dll
+C:\Users\Gabrielle\Downloads\iACTour - Copy\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\Gabrielle\Downloads\iACTour - Copy\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.csproj.AssemblyReference.cache
+C:\Users\Gabrielle\Downloads\iACTour - Copy\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.csproj.SuggestedBindingRedirects.cache
+C:\Users\Gabrielle\Downloads\iACTour - Copy\obj\Debug\Interop.WMPLib.dll
+C:\Users\Gabrielle\Downloads\iACTour - Copy\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\Gabrielle\Downloads\iACTour - Copy\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.csproj.ResolveComReference.cache
+C:\Users\Gabrielle\Downloads\iACTour - Copy\obj\Debug\AI_VOICE_RECOGNITION_BENNETT_TANYAG.Form1.resources
+C:\Users\Gabrielle\Downloads\iACTour - Copy\obj\Debug\AI_VOICE_RECOGNITION_BENNETT_TANYAG.Properties.Resources.resources
+C:\Users\Gabrielle\Downloads\iACTour - Copy\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.csproj.GenerateResource.cache
+C:\Users\Gabrielle\Downloads\iACTour - Copy\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.csproj.CoreCompileInputs.cache
+C:\Users\Gabrielle\Downloads\iACTour - Copy\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.exe
+C:\Users\Gabrielle\Downloads\iACTour - Copy\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.pdb

@@ -5,11 +5,12 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Speech.Recognition;
 using System.Speech.Synthesis;
-
+using WMPLib;
 
 namespace AI_VOICE_RECOGNITION_BENNETT_TANYAG
 {
@@ -17,19 +18,58 @@ namespace AI_VOICE_RECOGNITION_BENNETT_TANYAG
     {
         SpeechRecognitionEngine recEng = new SpeechRecognitionEngine();
         SpeechSynthesizer synth = new SpeechSynthesizer();
+
         public Form1()
         {
             InitializeComponent();
+            mediaPlayer.uiMode = "none";
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            /*txtSpeech.SelectionStart = txtSpeech.Text.Length;
+            txtSpeech.ScrollToCaret();*/
             try
             {
+                
                 synth.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Child);
                 Choices commands = new Choices();
-                commands.Add(new string[] {"What is iACADEMY", "What facilities are on ground floor","What facilities are on mezzanine floor","What facilities are on second floor", "What facilities are on third floor", "What facilities are on fourth floor", "What facilities are on fifth floor", "What facilities are on sixth floor", "What facilities are on seventh floor", "What facilities are on eighth floor", "What facilities are on ninth floor", "What facilities are on tenth floor", "What facilities are on twelfth floor", "What facilities are on lower penthouse floor", "What facilities are on upper penthouse floor", "Could you give me the payment options to pay my tuition in iACADEMY", "What are the available organizations in iACADEMY", "What are the available courses in iACADEMY", "Bye bot"});
+
+                // Commands using varied phrases
+                commands.Add(new string[] {
+                // General iACADEMY Information
+                "What is iACADEMY", "Tell me about iACADEMY", "Introduce iACADEMY", "Give me information on iACADEMY",
+            
+                // Facilities on each floor
+                "What facilities are on ground floor", "What is on the ground floor", "Describe ground floor", "Tell me about the ground floor",
+                "What facilities are on mezzanine floor", "What is on the mezzanine floor", "Describe mezzanine floor", "Tell me about the mezzanine",
+                "What facilities are on second floor", "What is on the second floor", "Describe second floor", "Tell me about the second floor",
+                "What facilities are on third floor", "What is on the third floor", "Describe third floor", "Tell me about the third floor",
+                "What facilities are on fourth floor", "What is on the fourth floor", "Describe fourth floor", "Tell me about the fourth floor",
+                "What facilities are on fifth floor", "What is on the fifth floor", "Describe fifth floor", "Tell me about the fifth floor",
+                "What facilities are on sixth floor", "What is on the sixth floor", "Describe sixth floor", "Tell me about the sixth floor",
+                "What facilities are on seventh floor", "What is on the seventh floor", "Describe seventh floor", "Tell me about the seventh floor",
+                "What facilities are on eighth floor", "What is on the eighth floor", "Describe eighth floor", "Tell me about the eighth floor",
+                "What facilities are on ninth floor", "What is on the ninth floor", "Describe ninth floor", "Tell me about the ninth floor",
+                "What facilities are on tenth floor", "What is on the tenth floor", "Describe tenth floor", "Tell me about the tenth floor",
+                "What facilities are on twelfth floor", "What is on the twelfth floor", "Describe twelfth floor", "Tell me about the twelfth floor",
+                "What facilities are on lower penthouse floor", "What is on the lower penthouse floor", "Describe lower penthouse floor", "Tell me about the lower penthouse floor",
+                "What facilities are on upper penthouse floor", "What is on the upper penthouse floor", "Describe upper penthouse floor", "Tell me about the upper penthouse floor",
+            
+                // Payment Options
+                "What are the payment options", "How can I pay my tuition", "How do I pay tuition", "Payment methods available", "Tuition payment options",
+            
+                // Organizations and Clubs
+                "List the organizations", "Available clubs", "Student groups", "What organizations are there", "Tell me about student organizations",
+            
+                // Courses and Programs
+                "List the courses", "What programs are offered", "Available courses", "What courses are there", "Tell me about programs offered",
+            
+                // Exiting commands
+                "Goodbye", "Bye bot", "Exit", "See you later", "Quit", "End session", "I'm done"
+                });
+
+
                 GrammarBuilder gBuilder = new GrammarBuilder();
                 gBuilder.Append(commands);
                 Grammar grammar = new Grammar(gBuilder);
@@ -39,90 +79,205 @@ namespace AI_VOICE_RECOGNITION_BENNETT_TANYAG
                 recEng.SpeechRecognized += RecEng_SpeechRecognized;
                 recEng.RecognizeAsync(RecognizeMode.Multiple);
             }
-            catch(Exception err)
+            catch (Exception err)
             {
                 MessageBox.Show(err.Message);
             }
+
             txtSpeech.Text = "iAC tour is now in operation";
             synth.Speak("Ayak tour is now in operation");
-            
         }
 
         private void RecEng_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
         {
-            string s;
+            string s = "";
+            string videoPath = "C:\\Users\\Gabrielle\\Downloads\\iACTour\\ai_videos\\";
+
             if (btnEnable.Enabled == false)
             {
-                switch (e.Result.Text)
-                {
-                    case "What is iACADEMY":
-                        txtSpeech.Clear();
-                        txtSpeech.Text = txtSpeech.Text + "Information and Communications Technology Academy, better known as iAcademy, is a private, non-sectarian educational institution in the Philippines.\r\nThe school boasts a hands-on approach and industry-aligned curriculum Computer Science, Multimedia Arts and Design, and Business programs. For more information, please head over to iacademy.edu.ph \r\n";
-                        s = txtSpeech.Text;
-                        synth.Speak(s);
-                        break;
-                    case string query when query.StartsWith("What facilities are on") && query.EndsWith("floor"):
-                        txtSpeech.Clear();
-                     
-                        string floorName = query.Replace("What facilities are on", "").Replace("floor", "").Trim().ToLower();
+                mediaPlayer.settings.volume = 500;
+                string recognizedText = e.Result.Text.ToLower();
 
-                        var facilitiesByFloor = new Dictionary<string, string>
+                // Basic information about iACADEMY
+                if (recognizedText.Contains("what is iacademy") || recognizedText.Contains("tell me about iacademy") || recognizedText.Contains("introduce iacademy"))
+                {
+                    s = "Information and Communications Technology Academy, better known as iACADEMY, is a private, non-sectarian educational institution in the Philippines. The school offers hands-on, industry-aligned curriculums in Computer Science, Multimedia Arts and Design, and Business. Visit iacademy.edu.ph for more.";
+
+                    mediaPlayer.URL = videoPath + "iacademy.mov";
+                    mediaPlayer.Ctlcontrols.play();
+                    mediaPlayer.settings.volume = 100;
+
+                }
+                // Floor-related commands, using basic keyword matching for floor names
+                else if (recognizedText.Contains("floor"))
+                {
+                    // Define floor facilities dictionary
+                    var facilitiesByFloor = new Dictionary<string, string>
                     {
-                        { "ground", "Building Lobby & Turnstile System, Equipment Center, Partner’s Hive, Gamers Hive, ATM Machine, Admissions, Registrars, Finance, Clinic" },
-                        { "mezzanine", "Meeting Rooms, OSAS, ELPD, IT Department, HR Department, Executive Office" },
-                        { "second", "Parking Area, Purchasing Department, Facilities Stock Room" },
+                        { "ground", "Building Lobby, Turnstile System, Equipment Center, Partner’s Hive, Gamers Hive, ATM, Admissions, Registrar, Finance, Clinic" },
+                        { "mezzanine", "Meeting Rooms, OSAS, ELPD, IT Department, HR, Executive Office" },
+                        { "second", "Parking, Purchasing Department, Facilities Stock Room" },
                         { "third", "Admin Office, Parking Area" },
                         { "fourth", "Parking Area" },
                         { "fifth", "Cafeteria, Grass Area / Student Lounge, Employee Lounge" },
                         { "sixth", "SHS Library" },
-                        { "seventh", "Sewing Room, Pink Room / Fashion Design Room, Green Room, Sound Room, Multimedia Arts Laboratory" },
-                        { "eighth", "Faculty Room, MMA Laboratory" },
+                        { "seventh", "Sewing Room, Fashion Design Room, Sound Room, Multimedia Arts Laboratory" },
+                        { "eighth", "Faculty Room, MMA Lab" },
                         { "ninth", "College Library" },
-                        { "tenth", "Lightbox Room, Mac Laboratory, Cintiq Laboratory, Unity Game Laboratory, MPSD Laboratory, Wet and Dry Drawing Room, Chemistry and Physics Laboratory, Multimedia Arts Laboratory" },
+                        { "tenth", "Lightbox Room, Mac Lab, Unity Game Lab, Wet/Dry Drawing Room, Chemistry Lab" },
                         { "twelfth", "Auditorium, Multipurpose Hall, Nexus Gallery" },
-                        { "lower penthouse", "Gymnasium, PE Room, Garden Deck (East Wing / West Wing)" },
+                        { "lower penthouse", "Gymnasium, PE Room, Garden Deck" },
                         { "upper penthouse", "Running Track, Library" }
                     };
-                        if (facilitiesByFloor.TryGetValue(floorName, out string facilities))
-                        {
-                            s = $"The facilities that are located on the {floorName} floor are: {facilities}.";
-                        }
-                        else
-                        {
-                            s = $"Sorry, I don't have information on the facilities for {floorName} floor.";
-                        }
 
-                        txtSpeech.Text = s;
-                        synth.Speak(s);
-                        break;
-                    case "Could you give me the payment options to pay my tuition in iACADEMY":
-                        txtSpeech.Clear();
-                        s = "There are several options to pay your tuition. \r\nOptions include: \r\nCash Payment for Onsite Enrollment \r\nCredit card payment for Onsite payment \r\nCheck Payment for both Onsite and Online payment \r\nBank Transfer for online enrollment.\r\n";
-                        txtSpeech.Text = s;
-                        synth.Speak(s);
-                        break;
-                    case "What are the available organizations in iACADEMY":
-                        txtSpeech.Clear();
-                        s = "Here are the list of organizations in iACADEMY \r\nThe following fall under the UG Department \r\nCSO \r\nISO \r\niACT \r\niACMedia \r\nVox Volare \r\niSekai \r\nPikzel \r\nMomentum \r\nOptics \r\nOctave \r\nRhythm \r\nTMT \r\nElix \r\nCompile \r\nInsight \r\nWonder \r\nPrima \r\nGCP \r\nThe following now fall under the SHS Department \r\nYFS \r\nSilakbo \r\niJSD \r\niMGG \r\nSHS Student Council \r\nSHS ISO \r\nSHS Prima \r\nSHSOctave \r\nSinlikhay";
-                        txtSpeech.Text = s;
-                        synth.Speak("Here are the list of organizations in eye academy. The following fall under the UG Department: CSO, ISO, iACT, iACMedia, Vox Volare, eeSekai, Pikzel, Momentum, Optics, Octave, Rhythm, TMT, Elix Compile, Insight, Wonder, Prima, GCP The following now fall under the SHS Department, YFS, Seelakbo, i JSD, i MGG, SHS Student Council, SHS ISO, SHS Preema, SHSOctave, Sinlikhay");
-                        break;
-                    case "What are the available courses in iACADEMY":
-                        txtSpeech.Clear();
-                        s = "There are four departments, namely: Senior Highschool, School of Computing, School of Arts and Design, and School of Business and Liberal Arts. \r\nFor Senior Highschool, the courses are as follows: \r\nAccountancy, Business, and Management \r\nArts and Design \r\nAudio Production \r\nAnimation \r\nFashion Design \r\nGraphic Illustration \r\nSoftware Development \r\nRobotics \r\nAnd Humanities and Social Sciences. \r\nFor School of Computing, the courses are as follows: \r\nGame Development \r\nSoftware Engineering \r\nCloud Computing \r\nData Science \r\nWeb Development \r\nFor School of Arts and Design, the courses are as follows: \r\nFashion Design and Technology \r\nMultimedia Arts and Design \r\nAnimation \r\nMusic Production and Sound Design \r\nFilm and Visual Effects \r\nFor School of Business and Liberal Arts, the courses are as follows: \r\nMarketing Management \r\nE-Management \r\nReal Estate Management \r\nPsychology \r\nAccountancy.";
-                        txtSpeech.Text = s;
-                        synth.Speak(s);
-                        break;
-                    case "Bye bot":
-                        s = "See ya next time. \r\n";
-                        txtSpeech.Text = s;
-                        synth.Speak(s);
-                        System.Environment.Exit(0);
-                        break;
+                    // Check each floor to see if its name is in the recognized text
+                    bool floorFound = false;
+                    foreach (var floor in facilitiesByFloor.Keys)
+                    {
+                        if (recognizedText.Contains(floor))
+                        {
+                            s = $"Facilities on the {floor} floor include: {facilitiesByFloor[floor]}.";
+                            floorFound = true;
+
+                            if (floor == "ground")
+                            {
+                                mediaPlayer.URL = videoPath + "ground.mov";
+                                mediaPlayer.Ctlcontrols.play();
+                            }
+
+                            if (floor == "mezzanine")
+                            {
+                                mediaPlayer.URL = videoPath + "mez.mov";
+                                mediaPlayer.Ctlcontrols.play();
+                            }
+
+                            if (floor == "second")
+                            {
+                                mediaPlayer.URL = videoPath + "second.mov";
+                                mediaPlayer.Ctlcontrols.play();
+                            }
+
+                            if (floor == "third")
+                            {
+                                mediaPlayer.URL = videoPath + "third.mov";
+                                mediaPlayer.Ctlcontrols.play();
+                            }
+
+                            if (floor == "fourth")
+                            {
+                                mediaPlayer.URL = videoPath + "fourth.mov";
+                                mediaPlayer.Ctlcontrols.play();
+                            }
+
+                            if (floor == "fifth")
+                            {
+                                mediaPlayer.URL = videoPath + "fifth.mov";
+                                mediaPlayer.Ctlcontrols.play();
+                            }
+
+                            if (floor == "sixth")
+                            {
+                                mediaPlayer.URL = videoPath + "sixth.mov";
+                                mediaPlayer.Ctlcontrols.play();
+                            }
+
+                            if (floor == "seventh")
+                            {
+                                mediaPlayer.URL = videoPath + "seventh.mov";
+                                mediaPlayer.Ctlcontrols.play();
+                            }
+
+                            if (floor == "eighth")
+                            {
+                                mediaPlayer.URL = videoPath + "eighth.mov";
+                                mediaPlayer.Ctlcontrols.play();
+                            }
+
+                            if (floor == "ninth")
+                            {
+                                mediaPlayer.URL = videoPath + "ninth.mov";
+                                mediaPlayer.Ctlcontrols.play();
+                            }
+
+                            if (floor == "tenth")
+                            {
+                                mediaPlayer.URL = videoPath + "tenth.mov";
+                                mediaPlayer.Ctlcontrols.play();
+                            }
+
+                            if (floor == "twelfth")
+                            {
+                                mediaPlayer.URL = videoPath + "twelfth.mov";
+                                mediaPlayer.Ctlcontrols.play();
+                            }
+
+                            if (floor == "lower penthouse")
+                            {
+                                mediaPlayer.URL = videoPath + "lp.mov";
+                                mediaPlayer.Ctlcontrols.play();
+                            }
+
+                            if (floor == "upper penthouse")
+                            {
+                                mediaPlayer.URL = videoPath + "up.mov";
+                                mediaPlayer.Ctlcontrols.play();
+
+                                break;
+                            }
+                        }
+                    }
+
+                    // If no floor matched, give an error response
+                    if (!floorFound)
+                    {
+                        s = "Sorry, I couldn't find information on that floor.";
+                        mediaPlayer.URL = videoPath + "no_floor.mov";
+                        mediaPlayer.Ctlcontrols.play();
+                    }
                 }
+                // Payment options command
+                else if (recognizedText.Contains("payment options") || recognizedText.Contains("payment methods") || recognizedText.Contains("tuition payment") || recognizedText.Contains("pay tuition") || recognizedText.Contains("how can i pay my tuition") || recognizedText.Contains("how do i pay tuition") || recognizedText.Contains("how to pay tuition"))
+                {
+                    s = "Payment options include: Cash for onsite enrollment, credit card onsite, check (onsite and online), and bank transfer for online enrollment.";
+                    synth.Speak(s);
+                }
+
+                // Organizations command
+                else if (recognizedText.Contains("organizations") || recognizedText.Contains("clubs") || recognizedText.Contains("student groups"))
+                {
+                    s = "iACADEMY organizations include CSO, ISO, iACT, iACMedia, Vox Volare, iSekai, Momentum, Optics, Octave, Rhythm, and many more for both UG and SHS departments.";
+
+                    mediaPlayer.URL = videoPath + "orgs.mov";
+                    mediaPlayer.Ctlcontrols.play();
+                }
+                // Courses command
+                else if (recognizedText.Contains("courses") || recognizedText.Contains("programs") || recognizedText.Contains("offered"))
+                {
+                    s = "Programs include Accountancy, Business, Arts and Design, Audio Production, Animation, Fashion, Graphic Illustration, Software Development, Robotics, Humanities, Game Development, Software Engineering, Data Science, Marketing, Psychology, and more.";
+
+                    mediaPlayer.URL = videoPath + "courses.mov";
+                    mediaPlayer.Ctlcontrols.play();
+                }
+                // Exit command
+                else if (recognizedText.Contains("goodbye") || recognizedText.Contains("bye bot") || recognizedText.Contains("exit") || recognizedText.Contains("see you later"))
+                {
+                    s = "See you next time!";
+                    synth.Speak(s);
+                    System.Environment.Exit(0);
+                    return;
+                }
+                else
+                {
+                    s = "I'm sorry, I didn't understand that command. Could you please repeat?";
+                    synth.Speak(s);
+                }
+
+                // Output the response and speak it
+                txtSpeech.Text = s;
+                //synth.Speak(s);
             }
-            // throw new NotImplementedException();
         }
+
 
         private void btnEnable_Click(object sender, EventArgs e)
         {
@@ -142,6 +297,11 @@ namespace AI_VOICE_RECOGNITION_BENNETT_TANYAG
             btnEnable.BackColor = Color.Gray;
             btnDisable.Enabled = false;
             btnDisable.BackColor = Color.Red;
+        }
+
+        private void axWindowsMediaPlayer1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
