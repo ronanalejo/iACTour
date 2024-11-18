@@ -29,13 +29,18 @@ namespace AI_VOICE_RECOGNITION_BENNETT_TANYAG
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.lblStatus = new System.Windows.Forms.Label();
             this.btnEnable = new System.Windows.Forms.Button();
             this.btnDisable = new System.Windows.Forms.Button();
             this.txtSpeech = new System.Windows.Forms.TextBox();
             this.mediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.groundFloorImageList = new System.Windows.Forms.ImageList(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.mediaPlayer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblStatus
@@ -93,6 +98,26 @@ namespace AI_VOICE_RECOGNITION_BENNETT_TANYAG
             this.mediaPlayer.TabIndex = 4;
             this.mediaPlayer.Enter += new System.EventHandler(this.axWindowsMediaPlayer1_Enter);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(617, 36);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(464, 434);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // groundFloorImageList
+            // 
+            this.groundFloorImageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            this.groundFloorImageList.ImageSize = new System.Drawing.Size(256, 256);
+            this.groundFloorImageList.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -100,6 +125,7 @@ namespace AI_VOICE_RECOGNITION_BENNETT_TANYAG
             this.BackColor = System.Drawing.SystemColors.Desktop;
             this.ClientSize = new System.Drawing.Size(1115, 689);
             this.ControlBox = false;
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.mediaPlayer);
             this.Controls.Add(this.txtSpeech);
             this.Controls.Add(this.btnDisable);
@@ -110,6 +136,7 @@ namespace AI_VOICE_RECOGNITION_BENNETT_TANYAG
             this.Text = "VOICE RECOGNITION PROGRAM";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.mediaPlayer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -122,6 +149,9 @@ namespace AI_VOICE_RECOGNITION_BENNETT_TANYAG
         private System.Windows.Forms.Button btnDisable;
         private System.Windows.Forms.TextBox txtSpeech;
         private AxWMPLib.AxWindowsMediaPlayer mediaPlayer;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ImageList groundFloorImageList;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

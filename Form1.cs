@@ -14,10 +14,91 @@ using WMPLib;
 
 namespace AI_VOICE_RECOGNITION_BENNETT_TANYAG
 {
+
     public partial class Form1 : Form
     {
         SpeechRecognitionEngine recEng = new SpeechRecognitionEngine();
         SpeechSynthesizer synth = new SpeechSynthesizer();
+        private string currentFloor = ""; // Tracks the current floor being displayed
+        private List<int> currentImageTimings = null; // Holds timing intervals for the current floor
+        private ImageList currentImageList = null; // Holds images for the current floor
+        private int currentImageIndex = 0; // Tracks the current image index
+        private Dictionary<string, List<int>> floorImageTimings = new Dictionary<string, List<int>>();
+        private Dictionary<string, ImageList> floorImageLists = new Dictionary<string, ImageList>();
+
+        private void StartSlideshow(string floor)
+        {
+            // Ensure that the floor data is properly initialized before proceeding
+            if (floorImageTimings.ContainsKey(floor) && floorImageLists.ContainsKey(floor))
+            {
+                currentFloor = floor;
+                currentImageTimings = floorImageTimings[floor];  // Get the timings for this floor
+                currentImageList = floorImageLists[floor];        // Get the ImageList for this floor
+                currentImageIndex = 0;                             // Start at the first image
+
+                // Only start the timer if the data is correctly set up
+                if (currentImageTimings.Count > 0 && currentImageList.Images.Count > 0)
+                {
+                    // Set the initial delay for the first image based on the first timing value
+                    timer1.Interval = currentImageTimings[0];  // Use the first interval
+                    timer1.Start();                             // Start the slideshow timer
+                }
+            }
+            else
+            {
+                // Do not display a message box here, you can handle this later if needed
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            // Ensure that the currentImageTimings is not null and has values
+            if (currentImageTimings != null && currentImageTimings.Count > 0)
+            {
+                // Check if there are still images to display
+                if (currentImageIndex < currentImageTimings.Count)
+                {
+                    // Show the image for the current index
+                    pictureBox1.Image = currentImageList.Images[currentImageIndex];
+
+                    // Move to the next image
+                    currentImageIndex++;
+
+                    // Set the interval for the next image based on the custom timings
+                    if (currentImageIndex < currentImageTimings.Count)
+                    {
+                        // Get the next interval from the list
+                        int nextInterval = currentImageTimings[currentImageIndex];
+                        timer1.Interval = nextInterval;  // Set the interval for the next image
+                    }
+                    else
+                    {
+                        // Stop the timer once all images have been shown
+                        timer1.Stop();
+                    }
+                }
+            }
+            else
+            {
+                // Do not show the message box here
+                timer1.Stop();  // Stop the timer to prevent continuous execution if no timings are set
+            }
+        }
+
+        private void InitializeFloorData()
+        {
+            // Initialize image timings for each floor (in milliseconds)
+            floorImageTimings["ground"] = new List<int> { 4500, 5000, 8800 };
+            floorImageTimings["mezzanine"] = new List<int> { 4000, 5000, 8000 };
+            floorImageTimings["second"] = new List<int> { 4200, 5500, 8500 };
+            // Add similar timings for other floors as needed
+
+            // Initialize ImageLists for each floor
+            floorImageLists["ground"] = groundFloorImageList;
+            //floorImageLists["mezzanine"] = mezzanineFloorImageList;
+            //floorImageLists["second"] = secondFloorImageList;
+            // Add other ImageLists for other floors as needed
+        }
 
         public Form1()
         {
@@ -29,6 +110,9 @@ namespace AI_VOICE_RECOGNITION_BENNETT_TANYAG
         {
             /*txtSpeech.SelectionStart = txtSpeech.Text.Length;
             txtSpeech.ScrollToCaret();*/
+
+            InitializeFloorData();
+
             try
             {
                 
@@ -141,8 +225,10 @@ namespace AI_VOICE_RECOGNITION_BENNETT_TANYAG
 
                             if (floor == "ground")
                             {
+                                timer1.Stop();
                                 mediaPlayer.URL = videoPath + "ground.mov";
                                 mediaPlayer.Ctlcontrols.play();
+                                StartSlideshow("ground");
                             }
 
                             if (floor == "mezzanine")
@@ -300,6 +386,11 @@ namespace AI_VOICE_RECOGNITION_BENNETT_TANYAG
         }
 
         private void axWindowsMediaPlayer1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }
