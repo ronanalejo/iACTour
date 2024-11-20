@@ -26,6 +26,17 @@ namespace AI_VOICE_RECOGNITION_BENNETT_TANYAG
         private Dictionary<string, List<int>> floorImageTimings = new Dictionary<string, List<int>>();
         private Dictionary<string, ImageList> floorImageLists = new Dictionary<string, ImageList>();
 
+        private List<Image> preloadedImages;
+
+        private void PreloadImages(ImageList imageList)
+        {
+            preloadedImages = new List<Image>();
+            foreach (Image img in imageList.Images)
+            {
+                preloadedImages.Add(new Bitmap(img)); // Create a bitmap copy to preload
+            }
+        }
+
         private void StartSlideshow(string floor)
         {
             if (floorImageTimings.ContainsKey(floor) && floorImageLists.ContainsKey(floor))
@@ -44,9 +55,13 @@ namespace AI_VOICE_RECOGNITION_BENNETT_TANYAG
 
                 if (currentImageList.Images.Count > 0)
                 {
-                    pictureBox1.Image = currentImageList.Images[currentImageIndex];
+                    // Preload images for smoother transitions
+                    PreloadImages(currentImageList);
+
+                    // Start timer with the delay for the first image
                     timer1.Interval = currentImageTimings[currentImageIndex];
                     timer1.Start();
+                    Console.WriteLine($"Slideshow started for floor: {floor}");
                 }
                 else
                 {
@@ -59,44 +74,105 @@ namespace AI_VOICE_RECOGNITION_BENNETT_TANYAG
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            if (currentImageTimings != null && currentImageList != null && currentImageIndex < currentImageList.Images.Count)
-            {
-                pictureBox1.Image = currentImageList.Images[currentImageIndex];
-                currentImageIndex++;
 
-                if (currentImageIndex < currentImageTimings.Count)
+        private void timer1_Tick_1(object sender, EventArgs e)
+        {
+            if (currentImageTimings != null && preloadedImages != null && preloadedImages.Count > 0)
+            {
+                if (currentImageIndex < preloadedImages.Count)
                 {
-                    timer1.Interval = currentImageTimings[currentImageIndex];
-                }
-                else
-                {
-                    timer1.Stop();
-                    Console.WriteLine($"Slideshow for {currentFloor} completed.");
+                    // Display the current preloaded image
+                    pictureBox1.Image = preloadedImages[currentImageIndex];
+                    Console.WriteLine($"Displaying image index {currentImageIndex} for floor {currentFloor}.");
+
+                    // Increment the index and set the next delay if there are more images
+                    currentImageIndex++;
+
+                    if (currentImageIndex < preloadedImages.Count)
+                    {
+                        timer1.Interval = currentImageTimings[currentImageIndex];
+                    }
+                    else
+                    {
+                        // Stop the slideshow if all images have been displayed
+                        timer1.Stop();
+                        Console.WriteLine($"Slideshow completed for floor {currentFloor}.");
+                    }
                 }
             }
             else
             {
                 timer1.Stop();
-                Console.WriteLine($"Slideshow stopped: No images or timing data available.");
+                Console.WriteLine("No images or timings available for slideshow.");
             }
         }
 
         private void InitializeFloorData()
         {
-            // Initialize image timings for each floor (in milliseconds)
-            floorImageTimings["ground"] = new List<int> { 4000, 5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000, 13000 };
-            //floorImageTimings["mezzanine"] = new List<int> { 4000, 5000, 8000 };
-            //floorImageTimings["second"] = new List<int> { 4200, 5500, 8500 };
-            // Add similar timings for other floors as needed
-
-            // Initialize ImageLists for each floor
+            // Ground floor setup
             floorImageLists["ground"] = groundFloorImageList;
-            //floorImageLists["mezzanine"] = mezzanineFloorImageList;
-            //floorImageLists["second"] = secondFloorImageList;
-            // Add other ImageLists for other floors as needed
+            floorImageTimings["ground"] = new List<int> { 4000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000 };
+
+            // Additional floors can be added similarly
+            floorImageLists["mezzanine"] = mezzanineFloorImageList;
+            floorImageTimings["mezzanine"] = new List<int> { 4000, 1000, 1000, 1000, 1000 };
+
+            // Second floor
+            floorImageLists["second"] = secondFloorImageList;
+            floorImageTimings["second"] = new List<int> { 4000, 1000 };
+
+            // Third floor
+            floorImageLists["third"] = thirdFloorImageList;
+            floorImageTimings["third"] = new List<int> { 4000 };
+
+            // Fourth floor
+            floorImageLists["fourth"] = fourthFloorImageList;
+            floorImageTimings["fourth"] = new List<int> { 4000 };
+
+            // Fifth floor
+            floorImageLists["fifth"] = fifthFloorImageList;
+            floorImageTimings["fifth"] = new List<int> { 4000, 1000, 1000 };
+
+            // Sixth floor
+            floorImageLists["sixth"] = sixthFloorImageList;
+            floorImageTimings["sixth"] = new List<int> { 4000 };
+
+            // Seventh floor
+            floorImageLists["seventh"] = seventhFloorImageList;
+            floorImageTimings["seventh"] = new List<int> { 4000, 1000, 1000, 1000, 1000, 1000, 1000 };
+
+            // Eighth floor
+            floorImageLists["eighth"] = eighthFloorImageList;
+            floorImageTimings["eighth"] = new List<int> { 4000, 1000 };
+
+            // Ninth floor
+            floorImageLists["ninth"] = ninthFloorImageList;
+            floorImageTimings["ninth"] = new List<int> { 4000 };
+
+            // Tenth floor
+            floorImageLists["tenth"] = tenthFloorImageList;
+            floorImageTimings["tenth"] = new List<int> { 4000, 1000, 1000, 1000, 1000 };
+
+            // Twelfth floor
+            floorImageLists["twelfth"] = twelfthFloorImageList;
+            floorImageTimings["twelfth"] = new List<int> { 4000, 1000 };
+
+            // Lower Penthouse floor (lpFloor)
+            floorImageLists["lpFloor"] = lpFloorImageList;
+            floorImageTimings["lpFloor"] = new List<int> { 4000, 1000, 1000, 1000 };
+
+            // Upper Penthouse floor (upFloor)
+            floorImageLists["upFloor"] = upFloorImageList;
+            floorImageTimings["upFloor"] = new List<int> { 4000, 1000 };
+
+            Console.WriteLine("Floor data initialized.");
+            foreach (var floor in floorImageLists.Keys)
+            {
+                Console.WriteLine($"Floor '{floor}' has {floorImageLists[floor].Images.Count} images.");
+            }
         }
+
+
 
         public Form1()
         {
@@ -106,10 +182,9 @@ namespace AI_VOICE_RECOGNITION_BENNETT_TANYAG
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            InitializeFloorData();
             /*txtSpeech.SelectionStart = txtSpeech.Text.Length;
             txtSpeech.ScrollToCaret();*/
-
-            InitializeFloorData();
 
             try
             {
@@ -173,7 +248,7 @@ namespace AI_VOICE_RECOGNITION_BENNETT_TANYAG
         private void RecEng_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
         {
             string s = "";
-            string videoPath = "C:\\Users\\Ma. Nona L. Alejo\\OneDrive - St John's Lutheran Church\\iACADEMY\\3rd Year\\IntroToAI\\Project\\iACTour\\ai_videos\\";
+            string videoPath = "C:\\Users\\ronan\\OneDrive - St John's Lutheran Church\\iACADEMY\\3rd Year\\IntroToAI\\Project\\iACTour\\ai_videos\\";
 
             if (btnEnable.Enabled == false)
             {
@@ -231,83 +306,108 @@ namespace AI_VOICE_RECOGNITION_BENNETT_TANYAG
 
                             if (floor == "mezzanine")
                             {
+                                timer1.Stop();
                                 mediaPlayer.URL = videoPath + "mez.mov";
                                 mediaPlayer.Ctlcontrols.play();
+                                StartSlideshow("mezzanine");
                             }
 
                             if (floor == "second")
                             {
+                                timer1.Stop();
                                 mediaPlayer.URL = videoPath + "second.mov";
                                 mediaPlayer.Ctlcontrols.play();
+                                StartSlideshow("second");
                             }
 
                             if (floor == "third")
                             {
+                                timer1.Stop();
                                 mediaPlayer.URL = videoPath + "third.mov";
                                 mediaPlayer.Ctlcontrols.play();
+                                StartSlideshow("third");
                             }
 
                             if (floor == "fourth")
                             {
+                                timer1.Stop();
                                 mediaPlayer.URL = videoPath + "fourth.mov";
                                 mediaPlayer.Ctlcontrols.play();
+                                StartSlideshow("fourth");
                             }
 
                             if (floor == "fifth")
                             {
+                                timer1.Stop();
                                 mediaPlayer.URL = videoPath + "fifth.mov";
                                 mediaPlayer.Ctlcontrols.play();
+                                StartSlideshow("fifth");
                             }
 
                             if (floor == "sixth")
                             {
+                                timer1.Stop();
                                 mediaPlayer.URL = videoPath + "sixth.mov";
                                 mediaPlayer.Ctlcontrols.play();
+                                StartSlideshow("sixth");
                             }
 
                             if (floor == "seventh")
                             {
+                                timer1.Stop();
                                 mediaPlayer.URL = videoPath + "seventh.mov";
                                 mediaPlayer.Ctlcontrols.play();
+                                StartSlideshow("seventh");
                             }
 
                             if (floor == "eighth")
                             {
+                                timer1.Stop();
                                 mediaPlayer.URL = videoPath + "eighth.mov";
                                 mediaPlayer.Ctlcontrols.play();
+                                StartSlideshow("eighth");
                             }
 
                             if (floor == "ninth")
                             {
+                                timer1.Stop();
                                 mediaPlayer.URL = videoPath + "ninth.mov";
                                 mediaPlayer.Ctlcontrols.play();
+                                StartSlideshow("ninth");
                             }
 
                             if (floor == "tenth")
                             {
+                                timer1.Stop();
                                 mediaPlayer.URL = videoPath + "tenth.mov";
                                 mediaPlayer.Ctlcontrols.play();
+                                StartSlideshow("tenth");
                             }
 
                             if (floor == "twelfth")
                             {
+                                timer1.Stop();
                                 mediaPlayer.URL = videoPath + "twelfth.mov";
                                 mediaPlayer.Ctlcontrols.play();
+                                StartSlideshow("twelfth");
                             }
 
                             if (floor == "lower penthouse")
                             {
+                                timer1.Stop();
                                 mediaPlayer.URL = videoPath + "lp.mov";
                                 mediaPlayer.Ctlcontrols.play();
+                                StartSlideshow("lpFloor");
                             }
 
                             if (floor == "upper penthouse")
                             {
+                                timer1.Stop();
                                 mediaPlayer.URL = videoPath + "up.mov";
                                 mediaPlayer.Ctlcontrols.play();
-
-                                break;
+                                StartSlideshow("upFloor");
                             }
+
                         }
                     }
 
