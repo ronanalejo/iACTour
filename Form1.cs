@@ -173,7 +173,7 @@ namespace AI_VOICE_RECOGNITION_BENNETT_TANYAG
         private void RecEng_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
         {
             string s = "";
-            string videoPath = "C:\\Users\\ronan\\OneDrive - St John's Lutheran Church\\iACADEMY\\3rd Year\\IntroToAI\\Project\\iACTour\\ai_videos\\";
+            string videoPath = "C:\\Users\\Ma. Nona L. Alejo\\OneDrive - St John's Lutheran Church\\iACADEMY\\3rd Year\\IntroToAI\\Project\\iACTour\\ai_videos\\";
 
             if (btnEnable.Enabled == false)
             {

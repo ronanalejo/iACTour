@@ -83,3 +83,18 @@ C:\Users\ronan\OneDrive - St John's Lutheran Church\iACADEMY\3rd Year\IntroToAI\
 C:\Users\ronan\OneDrive - St John's Lutheran Church\iACADEMY\3rd Year\IntroToAI\Project\iACTour\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.csproj.CoreCompileInputs.cache
 C:\Users\ronan\OneDrive - St John's Lutheran Church\iACADEMY\3rd Year\IntroToAI\Project\iACTour\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.exe
 C:\Users\ronan\OneDrive - St John's Lutheran Church\iACADEMY\3rd Year\IntroToAI\Project\iACTour\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.pdb
+C:\Users\Ma. Nona L. Alejo\OneDrive - St John's Lutheran Church\iACADEMY\3rd Year\IntroToAI\Project\iACTour\bin\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.exe.config
+C:\Users\Ma. Nona L. Alejo\OneDrive - St John's Lutheran Church\iACADEMY\3rd Year\IntroToAI\Project\iACTour\bin\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.exe
+C:\Users\Ma. Nona L. Alejo\OneDrive - St John's Lutheran Church\iACADEMY\3rd Year\IntroToAI\Project\iACTour\bin\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.pdb
+C:\Users\Ma. Nona L. Alejo\OneDrive - St John's Lutheran Church\iACADEMY\3rd Year\IntroToAI\Project\iACTour\bin\Debug\Interop.WMPLib.dll
+C:\Users\Ma. Nona L. Alejo\OneDrive - St John's Lutheran Church\iACADEMY\3rd Year\IntroToAI\Project\iACTour\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\Ma. Nona L. Alejo\OneDrive - St John's Lutheran Church\iACADEMY\3rd Year\IntroToAI\Project\iACTour\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.csproj.AssemblyReference.cache
+C:\Users\Ma. Nona L. Alejo\OneDrive - St John's Lutheran Church\iACADEMY\3rd Year\IntroToAI\Project\iACTour\obj\Debug\Interop.WMPLib.dll
+C:\Users\Ma. Nona L. Alejo\OneDrive - St John's Lutheran Church\iACADEMY\3rd Year\IntroToAI\Project\iACTour\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\Ma. Nona L. Alejo\OneDrive - St John's Lutheran Church\iACADEMY\3rd Year\IntroToAI\Project\iACTour\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.csproj.ResolveComReference.cache
+C:\Users\Ma. Nona L. Alejo\OneDrive - St John's Lutheran Church\iACADEMY\3rd Year\IntroToAI\Project\iACTour\obj\Debug\AI_VOICE_RECOGNITION_BENNETT_TANYAG.Form1.resources
+C:\Users\Ma. Nona L. Alejo\OneDrive - St John's Lutheran Church\iACADEMY\3rd Year\IntroToAI\Project\iACTour\obj\Debug\AI_VOICE_RECOGNITION_BENNETT_TANYAG.Properties.Resources.resources
+C:\Users\Ma. Nona L. Alejo\OneDrive - St John's Lutheran Church\iACADEMY\3rd Year\IntroToAI\Project\iACTour\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.csproj.GenerateResource.cache
+C:\Users\Ma. Nona L. Alejo\OneDrive - St John's Lutheran Church\iACADEMY\3rd Year\IntroToAI\Project\iACTour\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.csproj.CoreCompileInputs.cache
+C:\Users\Ma. Nona L. Alejo\OneDrive - St John's Lutheran Church\iACADEMY\3rd Year\IntroToAI\Project\iACTour\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.exe
+C:\Users\Ma. Nona L. Alejo\OneDrive - St John's Lutheran Church\iACADEMY\3rd Year\IntroToAI\Project\iACTour\obj\Debug\AI-VOICE-RECOGNITION-BENNETT-TANYAG.pdb
