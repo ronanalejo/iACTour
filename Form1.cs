@@ -28,69 +28,67 @@ namespace AI_VOICE_RECOGNITION_BENNETT_TANYAG
 
         private void StartSlideshow(string floor)
         {
-            // Ensure that the floor data is properly initialized before proceeding
             if (floorImageTimings.ContainsKey(floor) && floorImageLists.ContainsKey(floor))
             {
                 currentFloor = floor;
-                currentImageTimings = floorImageTimings[floor];  // Get the timings for this floor
-                currentImageList = floorImageLists[floor];        // Get the ImageList for this floor
-                currentImageIndex = 0;                             // Start at the first image
+                currentImageTimings = floorImageTimings[floor];
+                currentImageList = floorImageLists[floor];
 
-                // Only start the timer if the data is correctly set up
-                if (currentImageTimings.Count > 0 && currentImageList.Images.Count > 0)
+                if (currentImageList.Images.Count != currentImageTimings.Count)
                 {
-                    // Set the initial delay for the first image based on the first timing value
-                    timer1.Interval = currentImageTimings[0];  // Use the first interval
-                    timer1.Start();                             // Start the slideshow timer
+                    Console.WriteLine("Mismatch: Number of images and timings do not match!");
+                    return;
+                }
+
+                currentImageIndex = 0;
+
+                if (currentImageList.Images.Count > 0)
+                {
+                    pictureBox1.Image = currentImageList.Images[currentImageIndex];
+                    timer1.Interval = currentImageTimings[currentImageIndex];
+                    timer1.Start();
+                }
+                else
+                {
+                    Console.WriteLine($"No images found for {floor}.");
                 }
             }
             else
             {
-                // Do not display a message box here, you can handle this later if needed
+                Console.WriteLine($"Floor data not initialized properly for {floor}.");
             }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            // Ensure that the currentImageTimings is not null and has values
-            if (currentImageTimings != null && currentImageTimings.Count > 0)
+            if (currentImageTimings != null && currentImageList != null && currentImageIndex < currentImageList.Images.Count)
             {
-                // Check if there are still images to display
+                pictureBox1.Image = currentImageList.Images[currentImageIndex];
+                currentImageIndex++;
+
                 if (currentImageIndex < currentImageTimings.Count)
                 {
-                    // Show the image for the current index
-                    pictureBox1.Image = currentImageList.Images[currentImageIndex];
-
-                    // Move to the next image
-                    currentImageIndex++;
-
-                    // Set the interval for the next image based on the custom timings
-                    if (currentImageIndex < currentImageTimings.Count)
-                    {
-                        // Get the next interval from the list
-                        int nextInterval = currentImageTimings[currentImageIndex];
-                        timer1.Interval = nextInterval;  // Set the interval for the next image
-                    }
-                    else
-                    {
-                        // Stop the timer once all images have been shown
-                        timer1.Stop();
-                    }
+                    timer1.Interval = currentImageTimings[currentImageIndex];
+                }
+                else
+                {
+                    timer1.Stop();
+                    Console.WriteLine($"Slideshow for {currentFloor} completed.");
                 }
             }
             else
             {
-                // Do not show the message box here
-                timer1.Stop();  // Stop the timer to prevent continuous execution if no timings are set
+                timer1.Stop();
+                Console.WriteLine($"Slideshow stopped: No images or timing data available.");
             }
         }
 
         private void InitializeFloorData()
         {
             // Initialize image timings for each floor (in milliseconds)
-            floorImageTimings["ground"] = new List<int> { 4500, 5000, 8800 };
-            floorImageTimings["mezzanine"] = new List<int> { 4000, 5000, 8000 };
-            floorImageTimings["second"] = new List<int> { 4200, 5500, 8500 };
+            floorImageTimings["ground"] = new List<int> { 4000, 5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000, 13000 };
+            //floorImageTimings["mezzanine"] = new List<int> { 4000, 5000, 8000 };
+            //floorImageTimings["second"] = new List<int> { 4200, 5500, 8500 };
             // Add similar timings for other floors as needed
 
             // Initialize ImageLists for each floor
@@ -175,7 +173,7 @@ namespace AI_VOICE_RECOGNITION_BENNETT_TANYAG
         private void RecEng_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
         {
             string s = "";
-            string videoPath = "C:\\Users\\Gabrielle\\Downloads\\iACTour\\ai_videos\\";
+            string videoPath = "C:\\Users\\ronan\\OneDrive - St John's Lutheran Church\\iACADEMY\\3rd Year\\IntroToAI\\Project\\iACTour\\ai_videos\\";
 
             if (btnEnable.Enabled == false)
             {
@@ -317,7 +315,7 @@ namespace AI_VOICE_RECOGNITION_BENNETT_TANYAG
                     if (!floorFound)
                     {
                         s = "Sorry, I couldn't find information on that floor.";
-                        mediaPlayer.URL = videoPath + "no_floor.mov";
+                        mediaPlayer.URL = videoPath + "sorryFloor.mov";
                         mediaPlayer.Ctlcontrols.play();
                     }
                 }
@@ -325,7 +323,8 @@ namespace AI_VOICE_RECOGNITION_BENNETT_TANYAG
                 else if (recognizedText.Contains("payment options") || recognizedText.Contains("payment methods") || recognizedText.Contains("tuition payment") || recognizedText.Contains("pay tuition") || recognizedText.Contains("how can i pay my tuition") || recognizedText.Contains("how do i pay tuition") || recognizedText.Contains("how to pay tuition"))
                 {
                     s = "Payment options include: Cash for onsite enrollment, credit card onsite, check (onsite and online), and bank transfer for online enrollment.";
-                    synth.Speak(s);
+                    mediaPlayer.URL = videoPath + "payment.mov";
+                    mediaPlayer.Ctlcontrols.play();
                 }
 
                 // Organizations command
@@ -348,14 +347,16 @@ namespace AI_VOICE_RECOGNITION_BENNETT_TANYAG
                 else if (recognizedText.Contains("goodbye") || recognizedText.Contains("bye bot") || recognizedText.Contains("exit") || recognizedText.Contains("see you later"))
                 {
                     s = "See you next time!";
-                    synth.Speak(s);
+                    mediaPlayer.URL = videoPath + "seeyou.mov";
+                    mediaPlayer.Ctlcontrols.play();
                     System.Environment.Exit(0);
                     return;
                 }
                 else
                 {
                     s = "I'm sorry, I didn't understand that command. Could you please repeat?";
-                    synth.Speak(s);
+                    mediaPlayer.URL = videoPath + "sorry.mov";
+                    mediaPlayer.Ctlcontrols.play();
                 }
 
                 // Output the response and speak it
@@ -386,11 +387,6 @@ namespace AI_VOICE_RECOGNITION_BENNETT_TANYAG
         }
 
         private void axWindowsMediaPlayer1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }

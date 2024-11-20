@@ -35,10 +35,10 @@ namespace AI_VOICE_RECOGNITION_BENNETT_TANYAG
             this.btnEnable = new System.Windows.Forms.Button();
             this.btnDisable = new System.Windows.Forms.Button();
             this.txtSpeech = new System.Windows.Forms.TextBox();
-            this.mediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groundFloorImageList = new System.Windows.Forms.ImageList(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.mediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.mediaPlayer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -88,6 +88,25 @@ namespace AI_VOICE_RECOGNITION_BENNETT_TANYAG
             this.txtSpeech.Size = new System.Drawing.Size(561, 125);
             this.txtSpeech.TabIndex = 3;
             // 
+            // groundFloorImageList
+            // 
+            this.groundFloorImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("groundFloorImageList.ImageStream")));
+            this.groundFloorImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.groundFloorImageList.Images.SetKeyName(0, "LOBBY - MAKATI.jpg");
+            this.groundFloorImageList.Images.SetKeyName(1, "Turnstile.JPG");
+            this.groundFloorImageList.Images.SetKeyName(2, "Equipment.JPG");
+            this.groundFloorImageList.Images.SetKeyName(3, "PARTNERS HIVE - MAKATI.JPG");
+            this.groundFloorImageList.Images.SetKeyName(4, "Gamer\'s Hive.JPG");
+            this.groundFloorImageList.Images.SetKeyName(5, "ATM Machine.JPG");
+            this.groundFloorImageList.Images.SetKeyName(6, "Admission\'s Office.JPG");
+            this.groundFloorImageList.Images.SetKeyName(7, "Registrar.JPG");
+            this.groundFloorImageList.Images.SetKeyName(8, "Finance.JPG");
+            this.groundFloorImageList.Images.SetKeyName(9, "Clinic.JPG");
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            // 
             // mediaPlayer
             // 
             this.mediaPlayer.Enabled = true;
@@ -102,21 +121,10 @@ namespace AI_VOICE_RECOGNITION_BENNETT_TANYAG
             // 
             this.pictureBox1.Location = new System.Drawing.Point(617, 36);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(464, 434);
+            this.pictureBox1.Size = new System.Drawing.Size(486, 434);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // groundFloorImageList
-            // 
-            this.groundFloorImageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
-            this.groundFloorImageList.ImageSize = new System.Drawing.Size(256, 256);
-            this.groundFloorImageList.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
             // 
             // Form1
             // 
@@ -149,9 +157,9 @@ namespace AI_VOICE_RECOGNITION_BENNETT_TANYAG
         private System.Windows.Forms.Button btnDisable;
         private System.Windows.Forms.TextBox txtSpeech;
         private AxWMPLib.AxWindowsMediaPlayer mediaPlayer;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ImageList groundFloorImageList;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
